@@ -19,10 +19,10 @@ def print_string(parameter):
 
 @app.route('/count/<int:param>')
 def count(param):
-    numbers = '\n'.join(map(str, range(1, param + 1)))
+    numbers = '\n'.join(map(str, range(param )))
     return numbers
 
-@app.route('/math/<float:num1><string:operation><float:num2>')
+@app.route('/math/<int:num1>/<string:operation>/<int:num2>')
 def math(num1, operation, num2):
     result = None
     if operation == '+':
@@ -42,7 +42,4 @@ def math(num1, operation, num2):
         else:
             return "Modulo by zero is not allowed!"
 
-    if result is not None:
-        return f'Result of {num1} {operation} {num2} is: {result}'
-    else:
-        return "Invalid operation or operands."
+    return str(result)
